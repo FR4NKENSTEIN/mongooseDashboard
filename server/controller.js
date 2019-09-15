@@ -1,21 +1,39 @@
-
+const Raven = require("./models")
 
 module.exports = {
     // RENDERS
-    index: function(req,res){
+    index: function(Request,Response){// should display a table
         console.log("########  @ INDEX");
-        res.render('index');
+        Raven.find().then( docs => // put all the ravens in the DB in the table
+            Response.render('index', {ravens: docs})
+        );
     },
-    adopter: function(req,res){
+    adoption: function(Request,Response){// should display a form
         console.log("######## @ ADOPT");
-        res.render('adopt');
+        Response.render('adopt');
     },
-    displayer: function(req,res){
+    displayer: function(Request,Response){// should display data
         console.log("######## @ DISPLAY");
-        res.render('display');
+        Raven.findOne(Request.params)
+            .then(oneRaven => Response.render('display', {aRaven: oneRaven})
+            .catch(err => Response.json(err))
+        );
     },
-    modifier: function(req,res){
+    modify: function(Request,Response){// should display a form
         console.log("######## @ MODIFY");
-        res.render('modify');
+        Response.render('modify');
+    },
+    // PROCESSORS
+    adopter: function(Request,Response){
+        console.log("######## @ ADOPTION PROCESS");
+        console.log('######## DATA: ', Request.body);
+        // Response.redirect('/raven/new');
+        const adoptee = new Raven();
+        adoptee.name = Request.body.name_input;
+        adoptee.age = Request.body.age_input;
+        adoptee.save().then(newRaven => {
+            console.log('######## NEW RAVEN: ', newRaven);
+            Response.redirect(`/raven/${newRaven._id}`);
+        });
     },
 }

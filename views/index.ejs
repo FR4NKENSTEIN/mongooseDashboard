@@ -12,11 +12,11 @@
     <div class="container-flow mx-3 mt-5">
     <div class="row">
         <div class="col-3">
-        <a href='/raven/new'>
+        <a href='/raven/new'><!--ADOPT BUTTON-->
             <buton class='btn btn-block btn-primary mb-2'>Adopt</button>
         </a>
         </div>
-        <div class="col-7">
+        <div class="col-7"><!--WORKING COL-->
         <h2 class="text-center">A Flock of Ravens</h2>
         <table class="table table-bordered table-dark table-hover">
             <thead class="bg-success text-center text-light">
@@ -27,15 +27,17 @@
             </tr>
             </thead>
             <tbody class='text-center'>
+            <% for(var r of ravens) {%>
             <tr>
-                <td>Charlie</td>
-                <td>16</td>
+                <td><%= r.name%></td>
+                <td><%= r.age%></td>
                 <td class='px-0'>
-                    <a href="/raven"><span class='text-info'>Details</span></a> | 
-                    <a href="/raven/edit"><span class="text-warning">Modify</span></a> | 
-                    <a href="/raven/destroy"><span class="text-danger">Exile</span></a>
+                    <a href="/raven/<%= r._id%>"><span class='text-info'>Details</span></a> | 
+                    <a href="/raven/edit/<%= r._id%>"><span class="text-warning">Modify</span></a> | 
+                    <a href="/raven/destroy/<%= r._id%>"><span class="text-danger">Exile</span></a>
                 </td>
             </tr>
+            <% } %>
             </tbody>
         </table>
         </div><!--WORKING COL-->

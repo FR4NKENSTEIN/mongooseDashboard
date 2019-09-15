@@ -12,21 +12,22 @@
     <div class="container-flow mx-3 mt-5">
         <div class="row">
             <div class="col-3">
-            <a href='/'>
+            <a href='/'><!--FLOCK BUTTON-->
                 <buton class='btn btn-block btn-success mb-2'>Flock</button>
             </a>
-            <a href='/raven/new'>
+            <a href='/raven/new'><!--ADOPT BUTTON-->
                 <buton class='btn btn-block btn-primary mb-2'>Adopt</button>
             </a>
-            <a href='/raven/edit'>
-                <buton class='btn btn-block btn-warning mb-2'>Modify</button>
+            <a href='/raven/edit/_id'><!--MODIFY BUTTON-->
+                <buton class='btn btn-block btn-warning mb-2 text-white'>Modify</button>
             </a>
-            <a href='/raven/destroyer'>
+            <a href='/raven/destroy/_id'><!--EXILE BUTTON-->
                 <buton class='btn btn-block btn-danger mb-2'>Exile</button>
             </a>
             </div>
-            <div class="col-7">
-            <h2 class='text-center'>"Raven.name"'s details</h2>
+            <div class="col-7"><!--WORKING COL-->
+            <h2 class='text-center'><%= aRaven.name%>'s details</h2>
+            <h4><%= aRaven.name%> is <%= aRaven.age%> years old.</h4>
             </div><!--WORKING COL-->
             <div class="col-2"></div>
         </div>
