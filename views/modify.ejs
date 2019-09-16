@@ -18,15 +18,19 @@
             <a href='/raven/new'><!--ADOPT BUTTON-->
                 <buton class='btn btn-block btn-primary mb-2'>Adopt</button>
             </a>
-            <a href='/raven/_id'><!--DETAIL BUTTON-->
+            <a href='/raven/<%= aRaven._id%>'><!--DETAIL BUTTON-->
                 <buton class='btn btn-block btn-info mb-2 text-white'>Details</button>
             </a>
-            <a href='/raven/destroy/_id'><!--EXILE BUTTON-->
+            <a href='/raven/destroy/<%= aRaven._id%>'><!--EXILE BUTTON-->
                 <buton class='btn btn-block btn-danger mb-2'>Exile</button>
             </a>
             </div>
             <div class="col-7"><!--WORKING COL-->
-            <h2 class='text-center'>Modify "Ravne.name"</h2>
+            <h2 class='text-center'>Modify <%= aRaven.name%></h2>
+            <form action="/raven/<%= aRaven._id%>" method="POST">
+                New Name: <input type="text" class="for-control" name="name_input">
+                <button type="submit" class="btn btn-warning text-white">Submit</button>
+            </form>
             </div><!--WORKING COL-->
             <div class="col-2"></div>
         </div>
